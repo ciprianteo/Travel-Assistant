@@ -33,14 +33,14 @@
                     <Label Text="{Binding DepartureCityDepartureTime}" 
                             LineBreakMode="NoWrap"
                             Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="17" 
+                            FontSize="16" 
                             Grid.Row="1" Grid.Column="1"/>
                     
                     <Label Text="Ora Sosire: " FontSize="14" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center"/>
                     <Label Text="{Binding ArrivalCityArrivalTime}" 
                             LineBreakMode="NoWrap"
                             Style="{DynamicResource ListItemDetailTextStyle}"
-                            FontSize="17" 
+                            FontSize="16" 
                             Grid.Row="2" Grid.Column="1"/>
                     <!--<StackLayout.GestureRecognizers>
                         <TapGestureRecognizer 
