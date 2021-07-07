@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Travel_Assistant.Views.RegisterPage"
+             Shell.FlyoutBehavior="Disabled">
+    <ContentPage.Content>
+        <StackLayout Spacing="20">
+            <Grid Padding="10, 50, 0, 0" VerticalOptions="Start" RowSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Text="Nume:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
+                <Label Grid.Row="1" Grid.Column="0" Text="Prenume:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
+                <Label Grid.Row="2" Grid.Column="0" Text="Telefon:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
+                <Label Grid.Row="3" Grid.Column="0" Text="Email:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
+                <Label Grid.Row="4" Grid.Column="0" Text="CNP:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
+                <Label Grid.Row="5" Grid.Column="0" Text="Parola:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
+                <Label Grid.Row="6" Grid.Column="0" Text="Confirmare Parola:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
+
+                <Entry Grid.Row="0" Grid.Column="1" Text="{Binding nume}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220"/>
+                <Entry Grid.Row="1" Grid.Column="1" Text="{Binding prenume}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220"/>
+                <Entry Grid.Row="2" Grid.Column="1" Text="{Binding telefon}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220"/>
+                <Entry Grid.Row="3" Grid.Column="1" Text="{Binding email}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220"/>
+                <Entry Grid.Row="4" Grid.Column="1" Text="{Binding cnp}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220"/>
+                <Entry Grid.Row="5" Grid.Column="1" Text="{Binding password}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220" IsPassword="True"/>
+                <Entry Grid.Row="6" Grid.Column="1" x:Name="parolaConfInput" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220" IsPassword="True"/>
+                
+            </Grid>
+            <Button Text="Inregistrare" Command="{Binding RegisterCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

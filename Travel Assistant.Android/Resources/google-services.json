@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "25963388722",
+    "firebase_url": "https://travel-assistant-d3dc7-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "travel-assistant-d3dc7",
+    "storage_bucket": "travel-assistant-d3dc7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:25963388722:android:a97a8ee2af36b0cc3f812b",
+        "android_client_info": {
+          "package_name": "com.companyname.travel_assistant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "25963388722-iq15tvlskth63vrnd5nqstn4vdlsua4a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlndwzvJJjPE3_M1y0nFT1PrJqFUz-XzI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "25963388722-iq15tvlskth63vrnd5nqstn4vdlsua4a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

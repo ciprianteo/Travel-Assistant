@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Travel_Assistant.Views.TrainsPage"
+             xmlns:local="clr-namespace:Travel_Assistant.ViewModels"  
+             xmlns:model="clr-namespace:Travel_Assistant.Models">
+
+    <CollectionView x:Name="ItemsListView"
+                ItemsSource="{Binding Trains}"
+                SelectionMode="Single">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid VerticalOptions="Start" HorizontalOptions="Center" Padding="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="Tren: " FontSize="14" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center"/>
+                    <Label Text="{Binding ID}" 
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="20"
+                            Grid.Row="0" Grid.Column="1"/>
+                    
+                    <Label Text="Ora Plecare: " FontSize="14" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center"/>
+                    <Label Text="{Binding DepartureCityDepartureTime}" 
+                            LineBreakMode="NoWrap"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="16" 
+                            Grid.Row="1" Grid.Column="1"/>
+                    
+                    <Label Text="Ora Sosire: " FontSize="14" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center"/>
+                    <Label Text="{Binding ArrivalCityArrivalTime}" 
+                            LineBreakMode="NoWrap"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="16" 
+                            Grid.Row="2" Grid.Column="1"/>
+                    <!--<StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer 
+                                NumberOfTapsRequired="1"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}"		
+                                CommandParameter="{Binding .}">
+                        </TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>-->
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>

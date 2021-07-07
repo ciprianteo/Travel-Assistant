@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Travel_Assistant.Views.LoginPage"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout Padding="10, 10, 10, 10" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
+            <Grid Padding="0, 50, 0, 50" VerticalOptions="Start">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="250"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Text="Email:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
+                <Entry Grid.Row="0" Grid.Column="1" Text="{Binding email}"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Text="Password:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
+                <Entry IsPassword="True" Text="{Binding password}" Grid.Row="1" Grid.Column="1" WidthRequest="150"/>
+
+            </Grid>
+            
+            <Button Text="Login" Command="{Binding LoginCommand}"/>
+
+            <Grid VerticalOptions="End">
+            <Label HorizontalOptions="Center" Text="Creați un cont de utilizator!" TextColor="{StaticResource Primary}">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ShowRegisterPage}"/>
+                </Label.GestureRecognizers>
+            </Label>
+            </Grid>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>
