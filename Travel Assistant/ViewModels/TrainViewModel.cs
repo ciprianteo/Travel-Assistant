@@ -11,10 +11,12 @@ namespace Travel_Assistant.ViewModels
 {
     [QueryProperty(nameof(Arrive), "Arrive")]
     [QueryProperty(nameof(Depart), "Depart")]
+    [QueryProperty(nameof(DepartDate), "DepartDate")]
     public class TrainViewModel
     {
         string _statiePlecare;
         string _statieSosire;
+        DateTime _departureDate;
         public string Arrive
         {
             get => _statieSosire;
@@ -24,6 +26,11 @@ namespace Travel_Assistant.ViewModels
         {
             get => _statiePlecare;
             set { _statiePlecare = Uri.UnescapeDataString(value ?? string.Empty); }
+        }
+        public string DepartDate
+        {
+            get => _departureDate.ToString();
+            set { _departureDate = DateTime.Parse(Uri.UnescapeDataString(value ?? string.Empty)); }
         }
         public Command<TrainDisplayModel> ItemTapped { get; }
         public ObservableCollection<TrainDisplayModel> Trains { get; set; }

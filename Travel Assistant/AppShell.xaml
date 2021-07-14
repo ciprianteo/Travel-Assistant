@@ -38,7 +38,7 @@
     
     <TabBar Route="Main">
         <ShellContent Title="About" Icon="icon_about.png" ContentTemplate="{DataTemplate local:AboutPage}" />
-        <ShellContent Title="Cumpara Bilet" Icon="buy_tickets.png"  ContentTemplate="{DataTemplate local:BuyTicketPage}" />
+        <ShellContent Title="Cumpara Bilet" Icon="buy_tickets.png"  ContentTemplate="{DataTemplate local:SearchTrainPage}" />
         <ShellContent Title="Profile" Icon="profile.png" ContentTemplate="{DataTemplate local:ProfilePage}" />
     </TabBar>
 

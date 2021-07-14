@@ -10,12 +10,12 @@ using Xamarin.Forms.Xaml;
 namespace Travel_Assistant.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BuyTicketPage : ContentPage
+    public partial class SearchTrainPage : ContentPage
     {
-        public BuyTicketPage()
+        public SearchTrainPage()
         {
             InitializeComponent();
-            this.BindingContext = new BuyTicketViewModel();
+            this.BindingContext = new SearchTrainViewModel();
         }
     }
 }

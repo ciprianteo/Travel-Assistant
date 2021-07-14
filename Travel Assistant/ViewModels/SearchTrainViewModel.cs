@@ -11,20 +11,22 @@ using Xamarin.Forms;
 
 namespace Travel_Assistant.ViewModels
 {
-    public class BuyTicketViewModel
+    public class SearchTrainViewModel
     {
         public List<string> StationsList { get; set; }
         public int SourceIdx { get; set; }
         public int DestIdx { get; set; }
         public Command SearchTrainCommand { get; set; }
+        public DateTime DepartureDate { get; set; }
 
-        public BuyTicketViewModel()
+        public SearchTrainViewModel()
         {
+            DepartureDate = DateTime.Now.Date;
             SearchTrainCommand = new Command(OnClickSearchTrain);
             SourceIdx = -1;
             DestIdx = -1;
 
-            var assembly = typeof(BuyTicketPage).Assembly;
+            var assembly = typeof(SearchTrainPage).Assembly;
             Stream stream = assembly.GetManifestResourceStream("Travel_Assistant.Resources.statii.json");
 
             using (var reader = new System.IO.StreamReader(stream))
@@ -36,7 +38,7 @@ namespace Travel_Assistant.ViewModels
 
         private async void OnClickSearchTrain()
         {
-            await Shell.Current.GoToAsync($"{nameof(TrainsPage)}?Depart={ StationsList[SourceIdx] }&Arrive={ StationsList[DestIdx] }");
+            await Shell.Current.GoToAsync($"{nameof(TrainsPage)}?DepartDate={DepartureDate.Date.ToString()}&Depart={ StationsList[SourceIdx] }&Arrive={ StationsList[DestIdx] }");
         }
     }
 }
