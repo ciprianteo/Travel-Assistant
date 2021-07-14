@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 using Travel_Assistant.Models;
 using Travel_Assistant.Services;
+using Travel_Assistant.Views;
 using Xamarin.Forms;
 
 namespace Travel_Assistant.ViewModels
@@ -24,11 +25,13 @@ namespace Travel_Assistant.ViewModels
             get => _statiePlecare;
             set { _statiePlecare = Uri.UnescapeDataString(value ?? string.Empty); }
         }
-       public ObservableCollection<TrainDisplayModel> Trains { get; set; }
+        public Command<TrainDisplayModel> ItemTapped { get; }
+        public ObservableCollection<TrainDisplayModel> Trains { get; set; }
 
         public TrainViewModel()
         {
             Trains = new ObservableCollection<TrainDisplayModel>();
+            ItemTapped = new Command<TrainDisplayModel>(OnItemSelected);
             SearchTrains();
         }
 
@@ -37,12 +40,29 @@ namespace Travel_Assistant.ViewModels
             var trains = await RDatabaseConsumer.GetAllTrains();
             foreach( KeyValuePair<string,Train> t in trains)
             {
-                Trains.Add( new TrainDisplayModel {
-                    ID = t.Key,
-                    DepartureCityDepartureTime = t.Value.Statii[_statiePlecare].Plecare,
-                    ArrivalCityArrivalTime = t.Value.Statii[_statieSosire].Sosire
-                });
+                var departureStation = t.Value.Statii[_statiePlecare];
+                var arrivalStation = t.Value.Statii[_statieSosire];
+
+                if(departureStation.Km < arrivalStation.Km)
+                {
+                    Trains.Add(new TrainDisplayModel
+                    {
+                        ID = t.Key,
+                        DepartureCityDepartureTime = t.Value.Statii[_statiePlecare].Plecare,
+                        ArrivalCityArrivalTime = t.Value.Statii[_statieSosire].Sosire
+                    });
+                }
             }
+        }
+
+        private async void OnItemSelected(TrainDisplayModel item)
+        {
+            if (item == null)
+                return;
+
+            Item itm = new Item { Id = "id", Text = "txt" };
+            // This will push the ItemDetailPage onto the navigation stack
+            await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={itm.Id}");
         }
     }
 

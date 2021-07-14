@@ -42,13 +42,13 @@
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="16" 
                             Grid.Row="2" Grid.Column="1"/>
-                    <!--<StackLayout.GestureRecognizers>
+                    <Grid.GestureRecognizers>
                         <TapGestureRecognizer 
                                 NumberOfTapsRequired="1"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}"		
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:TrainViewModel}}, Path=ItemTapped}"		
                                 CommandParameter="{Binding .}">
                         </TapGestureRecognizer>
-                    </StackLayout.GestureRecognizers>-->
+                    </Grid.GestureRecognizers>
                 </Grid>
             </DataTemplate>
         </CollectionView.ItemTemplate>
