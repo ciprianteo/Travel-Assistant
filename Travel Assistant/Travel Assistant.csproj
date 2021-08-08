@@ -8,17 +8,19 @@
   <ItemGroup>
     <None Remove="Data\profile.json" />
     <None Remove="Resources\statii.json" />
+    <None Remove="Resources\ticket.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Data\profile.json" />
     <EmbeddedResource Include="Resources\statii.json" />
+    <EmbeddedResource Include="Resources\ticket.png" />
   </ItemGroup>
 
   <ItemGroup>  
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />  
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1821" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +34,12 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Views\BadgePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\BuyTicketPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MyTicketsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SearchTrainPage.xaml">

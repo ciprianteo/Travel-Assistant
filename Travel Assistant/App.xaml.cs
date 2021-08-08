@@ -16,10 +16,9 @@ namespace Travel_Assistant
         {
             InitializeComponent();
 
-            Auth = DependencyService.Get<IAuth>();
             FirebaseUtils = DependencyService.Get<IFirebase>();
-
-            DependencyService.Register<MockDataStore>();
+            Auth = DependencyService.Get<IAuth>();
+            
             MainPage = new AppShell();
 
         }

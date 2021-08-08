@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Travel_Assistant.Views.BuyTicketPage">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Grid VerticalOptions="Start" HorizontalOptions="StartAndExpand" Padding="10" RowSpacing="20" ColumnSpacing="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Text="Tren:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
+                <Label Grid.Row="0" Grid.Column="1" Text="{Binding TrainID}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
+                
+                <Label Grid.Row="1" Grid.Column="0" Text="Data Plecare:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding DepartureDate}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
+
+                <Label Grid.Row="2" Grid.Column="0" Text="Data Sosire:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
+                <Label Grid.Row="2" Grid.Column="1" Text="{Binding ArrivalDate}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
+
+                <Label Grid.Row="3" Grid.Column="0" Text="Traseu:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
+                <Label Grid.Row="3" Grid.Column="1" Text="{Binding Journey}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
+                
+                <Label Grid.Row="4" Grid.Column="0" Text="Clasa:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
+                <Picker Grid.Row="4" Grid.Column="1"  ItemsSource="{Binding ClasesList}" SelectedIndex="{Binding ClassIdx}" Title="Clasa" />
+                
+                <Label Grid.Row="5" Grid.Column="0" Text="Categorie:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
+                <Picker Grid.Row="5" Grid.Column="1" ItemsSource="{Binding CategoryList}" SelectedIndex="{Binding CatIdx}" Title="Categorie" />
+                
+            </Grid>
+
+            <Label Text="Pret" HorizontalOptions="Center" VerticalOptions="End" FontSize="Small" />
+            <Label Text="{Binding Price}" HorizontalOptions="Center" VerticalOptions="End" FontSize="Large" />
+            <Button Text=" Cumpara Bilet " Padding="20" Command="{Binding BuyTicketCommand}" HorizontalOptions="Center" VerticalOptions="End"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -51,8 +51,8 @@ namespace Travel_Assistant.Droid
         public void Create()
         {
             IsListAvailable = false;
-            DatabaseReference trainRef = FirebaseUtils.GetDatabase().GetReference("trenuri");
-            trainRef.AddValueEventListener(this);
+            //DatabaseReference trainRef = FirebaseUtils.GetDatabase().GetReference("trenuri");
+            //trainRef.AddValueEventListener(this);
         }
     }
 }

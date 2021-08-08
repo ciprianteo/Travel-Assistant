@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Travel_Assistant.Views.MyTicketsPage"
+             xmlns:local="clr-namespace:Travel_Assistant.ViewModels">
+    <ContentPage.Content>
+        <RefreshView IsRefreshing="{Binding IsBusy, Mode=OneWay}" Command="{Binding GetTicketsCommand}">
+            <CollectionView 
+                x:Name="ItemsListView"
+                ItemsSource="{Binding Tickets}"
+                SelectionMode="Single"
+                SelectedItem="{Binding SelectedTicket}"
+                SelectionChangedCommand="{Binding ItemTapped}">
+
+                <CollectionView.EmptyView>
+                    <StackLayout Padding="10">
+                        <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Nu aveti bilete cumparate!" FontSize="Large"/>
+                    </StackLayout>
+                </CollectionView.EmptyView>
+                
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid VerticalOptions="Start" HorizontalOptions="Center" Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+
+                            <Label Text="Bilet: " FontSize="14" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center"/>
+                            <Label Text="{Binding TicketID}" 
+                                LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="20"
+                                Grid.Row="0" Grid.Column="1"/>
+
+                            <Label Text="Tren: " FontSize="14" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center"/>
+                            <Label Text="{Binding TrainID}" 
+                                LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="20"
+                                Grid.Row="1" Grid.Column="1"/>
+
+                            <Label Text="Plecare: " FontSize="14" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center"/>
+                            <Label Text="{Binding DepartureCityDepartureTime}" 
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="16" 
+                                Grid.Row="2" Grid.Column="1"/>
+
+                            <Label Text="Sosire: " FontSize="14" Grid.Row="3" Grid.Column="0" VerticalTextAlignment="Center"/>
+                            <Label Text="{Binding ArrivalCityArrivalTime}" 
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="16" 
+                                Grid.Row="3" Grid.Column="1"/>
+
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </ContentPage.Content>
+</ContentPage>

@@ -12,15 +12,21 @@ using System.Threading.Tasks;
 using Travel_Assistant.Services;
 using Firebase.Auth;
 using Xamarin.Forms;
+using Firebase;
 
 [assembly : Dependency(typeof(Travel_Assistant.Droid.DroidAuth))]
 namespace Travel_Assistant.Droid
 {
     public class DroidAuth : IAuth
     {
+        private FirebaseAuth _auth;
+        public DroidAuth()
+        {
+            _auth = FirebaseAuth.Instance;
+        }
         public bool IsSignedIn()
         {
-            var user = FirebaseAuth.Instance.CurrentUser;
+            var user = _auth.CurrentUser;
             return user != null;
         }
 
@@ -28,7 +34,7 @@ namespace Travel_Assistant.Droid
         {
             try
             {
-                var user = await FirebaseAuth.Instance.SignInWithEmailAndPasswordAsync(email, password);
+                var user = await _auth.SignInWithEmailAndPasswordAsync(email, password);
                 var token = user.User.GetIdToken(false);
 
                 return token.ToString();
@@ -49,7 +55,7 @@ namespace Travel_Assistant.Droid
         {
             try
             {
-                var newUser = await FirebaseAuth.Instance.CreateUserWithEmailAndPasswordAsync(email, password);
+                var newUser = await _auth.CreateUserWithEmailAndPasswordAsync(email, password);
                 var token =  newUser.User.GetIdToken(false);
 
                 return token.ToString();
@@ -70,7 +76,7 @@ namespace Travel_Assistant.Droid
         {
             try
             {
-                Firebase.Auth.FirebaseAuth.Instance.SignOut();
+                _auth.SignOut();
                 return true;
             }
             catch(Exception)

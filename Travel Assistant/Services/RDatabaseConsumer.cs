@@ -32,5 +32,25 @@ namespace Travel_Assistant.Services
 
             return null;
         }
+
+        public static async Task<Dictionary<string, Price>> GetPrices()
+        {
+            string url = BaseUrl + "Preturi/Clase.json";
+
+            HttpClient http = new HttpClient();
+
+            HttpResponseMessage response = await http.GetAsync(url);
+
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var result = await response.Content.ReadAsStringAsync();
+            
+                var json = JsonConvert.DeserializeObject<Dictionary<string,Price>>(result);
+            
+                return json;
+            }
+
+            return null;
+        }
     }
 }
