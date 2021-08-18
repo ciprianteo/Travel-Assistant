@@ -8,13 +8,11 @@
   <ItemGroup>
     <None Remove="Data\profile.json" />
     <None Remove="Resources\statii.json" />
-    <None Remove="Resources\ticket.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Data\profile.json" />
     <EmbeddedResource Include="Resources\statii.json" />
-    <EmbeddedResource Include="Resources\ticket.png" />
   </ItemGroup>
 
   <ItemGroup>  

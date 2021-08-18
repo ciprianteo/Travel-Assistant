@@ -60,7 +60,7 @@ namespace Travel_Assistant.Droid
             map.Put("prenume", user.Prenume);
             map.Put("telefon", user.Telefon);
             map.Put("cnp", user.CNP); 
-            map.Put("creat_la", user.Creat.ToString());
+            map.Put("creat_la", user.Creat.ToString("g", CultureInfo.CreateSpecificCulture("de-DE")));
 
             var database = GetCloud();
 
@@ -154,6 +154,28 @@ namespace Travel_Assistant.Droid
             await query.Delete().AddOnSuccessListener(new OnSuccessRemoveTicketListener());
         }
 
+        public async Task<User> GetUserDetails()
+        {
+            var database = GetCloud();
+            var docRef = database.Collection("users").Document(GetUserEmail());
+            var successListener = new OnSuccessGetUserDetailsListener();
+
+            await docRef.Get().AddOnSuccessListener(successListener);
+
+            return successListener.user;
+        }
+
+        public async Task<Badge> GetUserBadge()
+        {
+            var database = GetCloud();
+            var docRef = database.Collection("legitimatii").Document(GetUserEmail());
+            var successListener = new OnSuccessGetUserBadgeListener();
+
+            await docRef.Get().AddOnSuccessListener(successListener);
+
+            return successListener.badge;
+        }
+
         public class OnSuccessTicketsListner : Java.Lang.Object, IOnSuccessListener
         {
             public OnSuccessTicketsListner()
@@ -179,10 +201,10 @@ namespace Travel_Assistant.Droid
                         };
 
                         DateTime date;
-                        DateTime.TryParse(doc.GetString("Arrival Date"), out date);
+                        DateTime.TryParse(doc.GetString("Arrival Date"), CultureInfo.CreateSpecificCulture("de-DE"), DateTimeStyles.None, out date);
                         ticket.ArrivalDate = date;
 
-                        DateTime.TryParse(doc.GetString("Departure Date"), out date);
+                        DateTime.TryParse(doc.GetString("Departure Date"), CultureInfo.CreateSpecificCulture("de-DE"), DateTimeStyles.None, out date);
                         ticket.DepartureDate = date;
 
                         Tickets.Add(doc.Id, ticket);
@@ -234,6 +256,43 @@ namespace Travel_Assistant.Droid
             {
                 await App.Current.MainPage.DisplayAlert("", "Bilet anulat cu succes!", "Ok");
             }
+        }
+
+        public class OnSuccessGetUserDetailsListener : Java.Lang.Object, IOnSuccessListener
+        {
+            public OnSuccessGetUserDetailsListener()
+            {
+                user = new User();
+            }
+
+            public void OnSuccess(Java.Lang.Object result)
+            {
+                var doc = (DocumentSnapshot)result;
+
+                user.Nume = doc.GetString("nume");
+                user.CNP = doc.GetString("cnp");
+                user.Prenume = doc.GetString("prenume");
+                
+            }
+
+            public User user { get; }
+        }
+        public class OnSuccessGetUserBadgeListener : Java.Lang.Object, IOnSuccessListener
+        {
+            public OnSuccessGetUserBadgeListener()
+            {
+                badge = new Badge();
+            }
+            public void OnSuccess(Java.Lang.Object result)
+            {
+                var doc = (DocumentSnapshot)result;
+
+                
+                badge.Numar = doc.GetString("numar");
+                badge.Universitate = doc.GetString("universitate");
+            }
+
+            public Badge badge { get; }
         }
     }
 }

@@ -17,11 +17,9 @@
                 <Label Grid.Row="0" Grid.Column="0" Text="Informatii Cont" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
                 <Label Grid.Row="1" Grid.Column="0" Text="Adaugare Legitimatie"  HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" >
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnDisplayBadgeMenuClicked" NumberOfTapsRequired="1"/>
+                        <TapGestureRecognizer Command="{Binding AddBadgeCommand}" NumberOfTapsRequired="1"/>
                     </Label.GestureRecognizers>
                 </Label>
-
-
             </Grid>
 
             <Button Text="Log Out" Command="{Binding LogOutCommand}" HorizontalOptions="Center" VerticalOptions="End"/>

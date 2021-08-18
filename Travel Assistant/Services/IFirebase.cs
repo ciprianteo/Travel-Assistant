@@ -15,6 +15,8 @@ namespace Travel_Assistant.Services
         void RemoveTicket(string TicketID);
         string GetUserEmail();
         Task<Dictionary<string, Ticket>> GetUserTickets();
+        Task<User> GetUserDetails();
+        Task<Badge> GetUserBadge();
         
     }
 }

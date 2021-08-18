@@ -42,12 +42,12 @@ namespace Travel_Assistant.Droid
             catch (FirebaseAuthInvalidUserException e)
             {
                 e.PrintStackTrace();
-                return string.Empty;
+                return "%INVALID%USER%";
             }
             catch (FirebaseAuthInvalidCredentialsException e)
             {
                 e.PrintStackTrace();
-                return string.Empty;
+                return "%INVALID%PASSWORD%";
             }
         }
 

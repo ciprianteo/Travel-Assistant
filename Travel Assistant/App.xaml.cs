@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using Travel_Assistant.Models;
 using Travel_Assistant.Services;
 using Travel_Assistant.Views;
 using Xamarin.Forms;
@@ -9,23 +10,25 @@ namespace Travel_Assistant
 {
     public partial class App : Application
     {
-        public static string ImageServerPath { get; } = "https://cdn.syncfusion.com/essential-ui-kit-for-xamarin.forms/common/uikitimages/";
         public IAuth Auth { get; }
         public IFirebase FirebaseUtils { get; }
+        private bool _validBadge;
+        public bool ValidBadge { get { return _validBadge; } }
         public App()
         {
             InitializeComponent();
 
             FirebaseUtils = DependencyService.Get<IFirebase>();
             Auth = DependencyService.Get<IAuth>();
-            
+            _validBadge = false;
+
             MainPage = new AppShell();
 
         }
 
         protected override void OnStart()
         {
-            _ = CheckLogin();
+            CheckLogin();
         }
 
         protected override void OnSleep()
@@ -36,10 +39,11 @@ namespace Travel_Assistant
         {
         }
 
-        private async Task CheckLogin()
+        private async void CheckLogin()
         {
             if (Auth.IsSignedIn())
             {
+                IsBadgeValid();
                 await Shell.Current.GoToAsync("//Main");
             }
             else
@@ -48,6 +52,51 @@ namespace Travel_Assistant
                 await Shell.Current.GoToAsync("//LoginPage");
             }
 
+        }
+
+        public async void IsBadgeValid()
+        {
+            Badge badge = null;
+            UniversityBadge univBadge = null;
+            await Task.Run(() =>
+            {
+                badge = FirebaseUtils.GetUserBadge().Result;
+            });
+
+            await Task.Run(() =>
+            {
+                univBadge = RDatabaseConsumer.GetBadge(badge.Numar, badge.Universitate).Result;
+            });
+
+            if (badge.Numar != null && badge.Universitate != null)
+            {
+                var viza = univBadge.Viza;
+                var currYear = DateTime.Now.Year;
+                var currMonth = DateTime.Now.Month;
+                int[] tokens = new int[2];
+                int idx = 0;
+                
+                foreach (var token in viza.Split('-'))
+                {
+                    tokens[idx++] = int.Parse(token);
+                }
+
+                if (currMonth < 10)
+                {
+                    if(tokens[1] >= currYear && tokens[0] >= currYear - 1)
+                        _validBadge = true;
+                    else
+                        _validBadge = false;
+
+                }
+                else
+                {
+                    if (tokens[1] == currYear && tokens[0] == currYear - 1)
+                        _validBadge = true;
+                    else
+                        _validBadge = false;
+                }
+            }
         }
     }
 }

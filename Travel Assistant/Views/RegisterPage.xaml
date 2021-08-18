@@ -34,7 +34,7 @@
                 <Entry Grid.Row="3" Grid.Column="1" Text="{Binding email}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220"/>
                 <Entry Grid.Row="4" Grid.Column="1" Text="{Binding cnp}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220"/>
                 <Entry Grid.Row="5" Grid.Column="1" Text="{Binding password}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220" IsPassword="True"/>
-                <Entry Grid.Row="6" Grid.Column="1" x:Name="parolaConfInput" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220" IsPassword="True"/>
+                <Entry Grid.Row="6" Grid.Column="1" Text="{Binding passwordConf}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220" IsPassword="True"/>
                 
             </Grid>
             <Button Text="Inregistrare" Command="{Binding RegisterCommand}"/>

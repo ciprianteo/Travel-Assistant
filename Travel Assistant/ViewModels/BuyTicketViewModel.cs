@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Text;
 using Travel_Assistant.Models;
 using Travel_Assistant.Services;
+using Travel_Assistant.Views;
 using Xamarin.Forms;
 
 namespace Travel_Assistant.ViewModels
@@ -98,7 +99,10 @@ namespace Travel_Assistant.ViewModels
             ClassIdx = -1;
             BuyTicketCommand = new Command(OnBuyTicketClicked);
             ClasesList = new ObservableCollection<string> { "I", "II" };
-            CategoryList = new ObservableCollection<string> { "Adult", "Student" };
+            CategoryList = new ObservableCollection<string> { "Adult"};
+
+            if (((App)Application.Current).ValidBadge)
+                CategoryList.Add("Student");
 
             SearchPrices();
         }
@@ -123,7 +127,7 @@ namespace Travel_Assistant.ViewModels
             }
         }
 
-        private void OnBuyTicketClicked()
+        private async void OnBuyTicketClicked()
         {
             Ticket ticket = new Ticket
             {
@@ -140,6 +144,7 @@ namespace Travel_Assistant.ViewModels
             };
 
             ((App)Application.Current).FirebaseUtils.AddTicket(ticket);
+            await Shell.Current.GoToAsync($"//Main/{nameof(SearchTrainPage)}");
         }
     }
 }

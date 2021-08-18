@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Travel_Assistant.Models;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
+using System.Globalization;
 
 namespace Travel_Assistant.ViewModels
 {
@@ -67,8 +68,8 @@ namespace Travel_Assistant.ViewModels
                 {
                     TicketID = ticket.Key,
                     TrainID = ticket.Value.TrainID,
-                    DepartureCityDepartureTime = ticket.Value.DepartureStation + " - " + ticket.Value.DepartureDate.ToString(),
-                    ArrivalCityArrivalTime = ticket.Value.ArrivalStation + " - " + ticket.Value.ArrivalDate.ToString()
+                    DepartureCityDepartureTime = ticket.Value.DepartureStation + " - " + ticket.Value.DepartureDate.ToString(CultureInfo.CreateSpecificCulture("de-DE")),
+                    ArrivalCityArrivalTime = ticket.Value.ArrivalStation + " - " + ticket.Value.ArrivalDate.ToString(CultureInfo.CreateSpecificCulture("de-DE"))
                 };
 
                 Tickets.Add(tdm);
@@ -76,13 +77,20 @@ namespace Travel_Assistant.ViewModels
         }
         private async void RemoveTicket()
         {
-            var action = await App.Current.MainPage.DisplayAlert("", "Anulati biletul?", "Yes", "No");
-            if(action)
+            if(_tickets[selectedTicket.TicketID].DepartureDate > DateTime.Now)
             {
-                ((App)Application.Current).FirebaseUtils.RemoveTicket(selectedTicket.TicketID);
-                Tickets.Remove(selectedTicket);
-                selectedTicket = null;
+                var action = await App.Current.MainPage.DisplayAlert("", "Anulati biletul?", "Yes", "No");
+                if (action)
+                {
+                    ((App)Application.Current).FirebaseUtils.RemoveTicket(selectedTicket.TicketID);
+                    Tickets.Remove(selectedTicket);
+                    selectedTicket = null;
+                }
+            }else
+            {
+                await App.Current.MainPage.DisplayAlert("", "Biletul nu mai poate fi anulat", "Ok");
             }
+            
         }
     }
 

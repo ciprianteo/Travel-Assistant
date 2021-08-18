@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
 using Travel_Assistant.Models;
 using Travel_Assistant.Services;
+using Travel_Assistant.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -37,11 +39,9 @@ namespace Travel_Assistant.ViewModels
             SelIdx = -1;
             UniversitiesList = new List<string>();
 
-            UniversitiesList.Add("UNIVERSITATEA POLITEHNICA DIN BUCUREŞTI");
-            UniversitiesList.Add("UNIVERSITATEA TEHNICĂ DE CONSTRUCŢII DIN BUCUREŞTI ");
-            UniversitiesList.Add("UNIVERSITATEA DIN BUCUREŞTI");
-            UniversitiesList.Add("ACADEMIA DE STUDII ECONOMICE DIN BUCUREŞTI");
-            UniversitiesList.Add("UNIVERSITATEA DE MEDICINĂ ŞI FARMACIE CAROL DAVILA DIN BUCUREŞTI");
+            UniversitiesList.Add("UNIVERSITATEA POLITEHNICA DIN BUCURESTI");
+            UniversitiesList.Add("UNIVERSITATEA DIN BUCURESTI");
+            UniversitiesList.Add("ACADEMIA DE STUDII ECONOMICE DIN BUCURESTI");
         }
 
         private async void OnUploadBadgeClicked()
@@ -62,9 +62,20 @@ namespace Travel_Assistant.ViewModels
                 badge.PozaSpate = pozaspate;
                 }
             );
+ 
+            if (await IsBadgeValid(badge))
+            {
+                ((App)Application.Current).FirebaseUtils.AddBadgeDocument(badge);
+                await App.Current.MainPage.DisplayAlert("Success", "Legitimatia a fost inregistrata cu succes!", "Ok");
+            }
+            else
+            {
+                await App.Current.MainPage.DisplayAlert("Failure", "Legitimatia nu a fost gasita in baza de date a facultatii sau datele nu coincid!", "Ok");
+            }
 
             IsUploading = false;
-            ((App)Application.Current).FirebaseUtils.AddBadgeDocument(badge);
+
+            await Shell.Current.GoToAsync($"//Main/{nameof(ProfilePage)}");
         }
 
         private async void OnLoadFacePhotoClicked()
@@ -76,6 +87,7 @@ namespace Travel_Assistant.ViewModels
                 var stream = await result.OpenReadAsync();
 
                 FaceImage = ImageSource.FromStream(() => stream);
+                OnPropertyChanged(nameof(FaceImage));
             }
         }
 
@@ -88,7 +100,26 @@ namespace Travel_Assistant.ViewModels
                 var stream = await result.OpenReadAsync();
 
                 BackImage = ImageSource.FromStream(() => stream);
+                OnPropertyChanged(nameof(BackImage));
             }
+        }
+
+        private async Task<bool> IsBadgeValid(Badge badge)
+        {
+            UniversityBadge uniBadge;
+            uniBadge = await RDatabaseConsumer.GetBadge(badge.Numar, badge.Universitate);
+            var userDetails = await ((App)Application.Current).FirebaseUtils.GetUserDetails();
+
+            if (uniBadge.Nume == userDetails.Nume && uniBadge.Prenume == userDetails.Prenume && uniBadge.CNP == userDetails.CNP)
+                return true;
+
+            return false;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

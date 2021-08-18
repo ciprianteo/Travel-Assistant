@@ -17,10 +17,5 @@ namespace Travel_Assistant.Views
             InitializeComponent();
             this.BindingContext = new ProfileViewModel();
         }
-
-        private async void OnDisplayBadgeMenuClicked(object sender, EventArgs args)
-        {
-            await Shell.Current.GoToAsync("BadgePage");
-        }
     }
 }
