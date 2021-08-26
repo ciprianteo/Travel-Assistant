@@ -62,12 +62,12 @@ namespace Travel_Assistant.Droid
             }
             catch (FirebaseAuthInvalidUserException e)
             {
-                e.PrintStackTrace();
+                await App.Current.MainPage.DisplayAlert("Failed", e.Message, "Ok");
                 return string.Empty;
             }
             catch(FirebaseAuthInvalidCredentialsException e)
             {
-                e.PrintStackTrace();
+                await App.Current.MainPage.DisplayAlert("Failed", e.Message, "Ok");
                 return string.Empty;
             }
         }

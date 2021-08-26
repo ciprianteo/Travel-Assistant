@@ -18,6 +18,7 @@ namespace Travel_Assistant
             Routing.RegisterRoute(nameof(BadgePage), typeof(BadgePage));
             Routing.RegisterRoute(nameof(TrainsPage), typeof(TrainsPage));
             Routing.RegisterRoute(nameof(BuyTicketPage), typeof(BuyTicketPage));
+            Routing.RegisterRoute(nameof(AccountInfoPage), typeof(AccountInfoPage));
         }
 
     }

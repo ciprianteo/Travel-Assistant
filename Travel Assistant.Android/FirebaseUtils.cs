@@ -272,6 +272,11 @@ namespace Travel_Assistant.Droid
                 user.Nume = doc.GetString("nume");
                 user.CNP = doc.GetString("cnp");
                 user.Prenume = doc.GetString("prenume");
+                user.Telefon = doc.GetString("telefon");
+                
+                DateTime date;
+                DateTime.TryParse(doc.GetString("creat_la"), CultureInfo.CreateSpecificCulture("de-DE"), DateTimeStyles.None, out date);
+                user.Creat = date;
                 
             }
 

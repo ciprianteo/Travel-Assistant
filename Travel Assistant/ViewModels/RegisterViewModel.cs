@@ -35,9 +35,9 @@ namespace Travel_Assistant.ViewModels
             try
             {
                 User usr = new User { Nume = nume, Prenume = prenume, CNP = cnp, Email = email, Telefon = telefon, Creat = DateTime.Now };
-                var user = ((App)Application.Current).Auth.Register(email, password);
+                var user = await ((App)Application.Current).Auth.Register(email, password);
 
-                if (user != null)
+                if (user != null && user != string.Empty)
                 {
                     ((App)Application.Current).FirebaseUtils.AddUserDocument(usr);
 
@@ -51,7 +51,7 @@ namespace Travel_Assistant.ViewModels
             }
             catch(Exception)
             {
-
+                await App.Current.MainPage.DisplayAlert("Failed", "User not created!", "Ok");
             }
             
         }
