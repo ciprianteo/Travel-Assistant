@@ -18,16 +18,15 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Row="0" Grid.Column="0" Text="De la:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
-                <Picker ItemsSource="{Binding StationsList}" SelectedIndex="{Binding SourceIdx}" Title="Statia de plecare" Grid.Column="1" Grid.Row="0"/>
+                <Label Grid.Row="0" Grid.Column="0" Text="De la:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
+                <Picker ItemsSource="{Binding StationsList}" SelectedIndex="{Binding SourceIdx}" Title="Statia de plecare" Grid.Column="1" Grid.Row="0" TextColor="Black" TitleColor="LightGray"/>
 
-                <Label Grid.Row="1" Grid.Column="0" Text="Pana la:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
-                <Picker ItemsSource="{Binding StationsList}" SelectedIndex="{Binding DestIdx}" Title="Statia de sosire" Grid.Column="1" Grid.Row="1"/>
+                <Label Grid.Row="1" Grid.Column="0" Text="Pana la:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
+                <Picker ItemsSource="{Binding StationsList}" SelectedIndex="{Binding DestIdx}" Title="Statia de sosire" Grid.Column="1" Grid.Row="1" TextColor="Black" TitleColor="LightGray"/>
 
-                <Label Grid.Row="2" Grid.Column="0" Text="Data:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
+                <Label Grid.Row="2" Grid.Column="0" Text="Data:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
                 <DatePicker Grid.Row="2" Grid.Column="1" Date="{Binding DepartureDate}" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand"
-                    MinimumDate="{Binding Source={x:Static sys:DateTime.Now}, Path=Date}"
-                />
+                    MinimumDate="{Binding Source={x:Static sys:DateTime.Now}, Path=Date}" TextColor="Black"/>
             </Grid>
 
             <Button Text=" Cauta " Command="{Binding SearchTrainCommand}" HorizontalOptions="Center"/>

@@ -15,11 +15,11 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Row="0" Grid.Column="0" Text="Numar Legitimatie:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
-                <Entry Grid.Row="0" Grid.Column="1" Text="{Binding NrLegitimatie}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220"/>
+                <Label Grid.Row="0" Grid.Column="0" Text="Numar Legitimatie:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
+                <Entry Grid.Row="0" Grid.Column="1" Text="{Binding NrLegitimatie}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220" TextColor="Black" Placeholder="Numar" PlaceholderColor="LightGray"/>
 
-                <Label Grid.Row="1" Grid.Column="0" Text="Universitate:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
-                <Picker Grid.Row="1" Grid.Column="1" Title="Selectati o universitate" ItemsSource="{Binding UniversitiesList}" SelectedIndex="{Binding SelIdx}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220"/>
+                <Label Grid.Row="1" Grid.Column="0" Text="Universitate:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
+                <Picker Grid.Row="1" Grid.Column="1" Title="Selectati o universitate" ItemsSource="{Binding UniversitiesList}" SelectedIndex="{Binding SelIdx}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220" TextColor="Black" TitleColor="LightGray"/>
 
             </Grid>
 
@@ -34,7 +34,7 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Row="0" Grid.Column="0" Text="Adaugati poze legitimatiei:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
+                <Label Grid.Row="0" Grid.Column="0" Text="Adaugati poze legitimatiei:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
                 <ImageButton Grid.Row="1" Grid.Column="0" Command="{Binding LoadFacePhotoCommand}" HorizontalOptions="Center" WidthRequest="75" HeightRequest="75" Source="{Binding FaceImage}" />
                 <ImageButton Grid.Row="1" Grid.Column="1" Command="{Binding LoadBackPhotoCommand}" HorizontalOptions="Center" WidthRequest="75" HeightRequest="75" Source="{Binding BackImage}" />
 

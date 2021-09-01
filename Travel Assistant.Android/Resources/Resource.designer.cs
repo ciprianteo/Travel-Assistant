@@ -8517,7 +8517,10 @@ namespace Travel_Assistant.Droid
 			public const int tooltip_frame_light = 2131165328;
 			
 			// aapt resource value: 0x7F070091
-			public const int xamarin_logo = 2131165329;
+			public const int train = 2131165329;
+			
+			// aapt resource value: 0x7F070092
+			public const int xamarin_logo = 2131165330;
 			
 			static Drawable()
 			{

@@ -11,7 +11,7 @@ using Xamarin.Forms;
 
 namespace Travel_Assistant.ViewModels
 {
-    public class BadgeViewModel
+    public class BadgeViewModel: INotifyPropertyChanged
     {
         public ImageSource FaceImage { get; set; }
         public ImageSource BackImage { get; set; }
@@ -42,6 +42,7 @@ namespace Travel_Assistant.ViewModels
             UniversitiesList.Add("UNIVERSITATEA POLITEHNICA DIN BUCURESTI");
             UniversitiesList.Add("UNIVERSITATEA DIN BUCURESTI");
             UniversitiesList.Add("ACADEMIA DE STUDII ECONOMICE DIN BUCURESTI");
+            UniversitiesList.Add("ACADEMIA TEHNICA MILITARA");
         }
 
         private async void OnUploadBadgeClicked()
@@ -66,7 +67,9 @@ namespace Travel_Assistant.ViewModels
             if (await IsBadgeValid(badge))
             {
                 ((App)Application.Current).FirebaseUtils.AddBadgeDocument(badge);
+                ((App)Application.Current).IsBadgeValid();
                 await App.Current.MainPage.DisplayAlert("Success", "Legitimatia a fost inregistrata cu succes!", "Ok");
+                
             }
             else
             {
@@ -108,6 +111,9 @@ namespace Travel_Assistant.ViewModels
         {
             UniversityBadge uniBadge;
             uniBadge = await RDatabaseConsumer.GetBadge(badge.Numar, badge.Universitate);
+            if (uniBadge == null)
+                return false;
+
             var userDetails = await ((App)Application.Current).FirebaseUtils.GetUserDetails();
 
             if (uniBadge.Nume == userDetails.Nume && uniBadge.Prenume == userDetails.Prenume && uniBadge.CNP == userDetails.CNP)

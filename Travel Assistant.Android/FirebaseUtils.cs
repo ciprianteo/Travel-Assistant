@@ -224,7 +224,7 @@ namespace Travel_Assistant.Droid
 
             private async void Display()
             {
-                await App.Current.MainPage.DisplayAlert("Success", "Ticket Bought", "Ok");
+                await App.Current.MainPage.DisplayAlert("Success", "Biletul a fost achizitionat cu succes!", "Ok");
             }
         }
 
@@ -242,7 +242,7 @@ namespace Travel_Assistant.Droid
 
             private async void Display()
             {
-                await App.Current.MainPage.DisplayAlert("Failure", "Failed! Please retry!", "Ok");
+                await App.Current.MainPage.DisplayAlert("Failure", "Biletul nu a putut fi achizitionat!", "Ok");
             }
         }
 

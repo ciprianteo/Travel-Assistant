@@ -60,14 +60,19 @@ namespace Travel_Assistant.Droid
 
                 return token.ToString();
             }
-            catch (FirebaseAuthInvalidUserException e)
+            catch (FirebaseAuthWeakPasswordException)
             {
-                await App.Current.MainPage.DisplayAlert("Failed", e.Message, "Ok");
+                await App.Current.MainPage.DisplayAlert("Failed", "Parola nu este suficient de puternica! Trebuie sa contina minim 6 caractere!", "Ok");
                 return string.Empty;
             }
             catch(FirebaseAuthInvalidCredentialsException e)
             {
-                await App.Current.MainPage.DisplayAlert("Failed", e.Message, "Ok");
+                await App.Current.MainPage.DisplayAlert("Failed", "Adresa de email nu are formatul corect!", "Ok");
+                return string.Empty;
+            }
+            catch(FirebaseAuthUserCollisionException)
+            {
+                await App.Current.MainPage.DisplayAlert("Failed", "Adresa de email este deja asociata unui cont!", "Ok");
                 return string.Empty;
             }
         }

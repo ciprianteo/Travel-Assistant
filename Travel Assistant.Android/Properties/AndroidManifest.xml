@@ -4,5 +4,5 @@
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.CAMERA" />
-	<application android:label="Travel_Assistant.Android" android:theme="@style/MainTheme"></application>
+	<application android:label="Travel Assistant" android:theme="@style/MainTheme" android:icon="@drawable/train"></application>
 </manifest>

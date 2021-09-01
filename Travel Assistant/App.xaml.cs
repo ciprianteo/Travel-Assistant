@@ -17,7 +17,7 @@ namespace Travel_Assistant
         public App()
         {
             InitializeComponent();
-
+            
             FirebaseUtils = DependencyService.Get<IFirebase>();
             Auth = DependencyService.Get<IAuth>();
             _validBadge = false;

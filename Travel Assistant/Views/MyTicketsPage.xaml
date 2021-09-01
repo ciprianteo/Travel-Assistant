@@ -4,7 +4,7 @@
              x:Class="Travel_Assistant.Views.MyTicketsPage"
              xmlns:local="clr-namespace:Travel_Assistant.ViewModels">
     <ContentPage.Content>
-        <RefreshView IsRefreshing="{Binding IsBusy, Mode=OneWay}" Command="{Binding GetTicketsCommand}">
+        <RefreshView IsRefreshing="{Binding IsBusy, Mode=OneWay}" Command="{Binding GetTicketsCommand}" RefreshColor="{StaticResource Primary}">
             <CollectionView 
                 x:Name="ItemsListView"
                 ItemsSource="{Binding Tickets}"
@@ -34,33 +34,33 @@
                             </Grid.ColumnDefinitions>
 
 
-                            <Label Text="Bilet: " FontSize="14" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center"/>
+                            <Label Text="Bilet: " FontSize="14" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center" TextColor="Black"/>
                             <Label Text="{Binding TicketID}" 
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
                                 FontSize="20"
-                                Grid.Row="0" Grid.Column="1"/>
+                                Grid.Row="0" Grid.Column="1" TextColor="Black"/>
 
-                            <Label Text="Tren: " FontSize="14" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center"/>
+                            <Label Text="Tren: " FontSize="14" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" TextColor="Black"/>
                             <Label Text="{Binding TrainID}" 
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
                                 FontSize="20"
-                                Grid.Row="1" Grid.Column="1"/>
+                                Grid.Row="1" Grid.Column="1" TextColor="Black"/>
 
-                            <Label Text="Plecare: " FontSize="14" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center"/>
+                            <Label Text="Plecare: " FontSize="14" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center" TextColor="Black"/>
                             <Label Text="{Binding DepartureCityDepartureTime}" 
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="16" 
-                                Grid.Row="2" Grid.Column="1"/>
+                                Grid.Row="2" Grid.Column="1" TextColor="Black"/>
 
-                            <Label Text="Sosire: " FontSize="14" Grid.Row="3" Grid.Column="0" VerticalTextAlignment="Center"/>
+                            <Label Text="Sosire: " FontSize="14" Grid.Row="3" Grid.Column="0" VerticalTextAlignment="Center" TextColor="Black"/>
                             <Label Text="{Binding ArrivalCityArrivalTime}" 
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="16" 
-                                Grid.Row="3" Grid.Column="1"/>
+                                Grid.Row="3" Grid.Column="1" TextColor="Black"/>
 
                         </Grid>
                     </DataTemplate>

@@ -3,15 +3,19 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <PackageIcon>train.png</PackageIcon>
+    <PackageIconUrl />
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Data\profile.json" />
     <None Remove="Resources\statii.json" />
+    <None Include="..\Travel Assistant.Android\Resources\drawable\train.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Data\profile.json" />
     <EmbeddedResource Include="Resources\statii.json" />
   </ItemGroup>
 
@@ -61,5 +65,9 @@
     <None Update="Views\ProfilePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\" />
   </ItemGroup>
 </Project>

@@ -41,7 +41,7 @@ namespace Travel_Assistant.ViewModels
                 {
                     ((App)Application.Current).FirebaseUtils.AddUserDocument(usr);
 
-                    await App.Current.MainPage.DisplayAlert("Success", "New User Created", "Ok");
+                    await App.Current.MainPage.DisplayAlert("Success", "Contul de utilizator a fost creat!", "Ok");
 
                     if (((App)Application.Current).Auth.SignOut())
                     {
@@ -51,7 +51,7 @@ namespace Travel_Assistant.ViewModels
             }
             catch(Exception)
             {
-                await App.Current.MainPage.DisplayAlert("Failed", "User not created!", "Ok");
+                await App.Current.MainPage.DisplayAlert("Failed", "Contul nu a putut fi creat!", "Ok");
             }
             
         }
@@ -73,6 +73,23 @@ namespace Travel_Assistant.ViewModels
                 await App.Current.MainPage.DisplayAlert("", "Campul CNP nu poate fi gol!", "Ok");
                 return false;
             }
+            else if (cnp.Length != 13)
+            {
+                await App.Current.MainPage.DisplayAlert("", "Campul CNP trebuie sa aiba exact 13 caractere!", "Ok");
+                return false;
+
+            }
+            else if(!OnlyDigits(cnp))
+            {
+                await App.Current.MainPage.DisplayAlert("", "Campul CNP trebuie sa contina doar cifre!", "Ok");
+                return false;
+
+            }else if(cnp[0] == '0' || cnp[1] == '9')
+            {
+                await App.Current.MainPage.DisplayAlert("", "Un CNP valid trebuie sa aiba prima cifra in intervalul [1, 8]!", "Ok");
+                return false;
+            }
+
             if (email == string.Empty || email == null)
             {
                 await App.Current.MainPage.DisplayAlert("", "Campul Email nu poate fi gol!", "Ok");
@@ -98,6 +115,15 @@ namespace Travel_Assistant.ViewModels
                 await App.Current.MainPage.DisplayAlert("", "Parolele introduse nu se potrivesc!", "Ok");
                 return false;
             }
+
+            return true;
+        }
+
+        private bool OnlyDigits(string str)
+        {
+            foreach (char c in str)
+                if (c < '0' || c > '9')
+                    return false;
 
             return true;
         }

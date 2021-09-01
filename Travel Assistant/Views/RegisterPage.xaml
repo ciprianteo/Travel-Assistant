@@ -20,22 +20,28 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Row="0" Grid.Column="0" Text="Nume:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
-                <Label Grid.Row="1" Grid.Column="0" Text="Prenume:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
-                <Label Grid.Row="2" Grid.Column="0" Text="Telefon:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
-                <Label Grid.Row="3" Grid.Column="0" Text="Email:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
-                <Label Grid.Row="4" Grid.Column="0" Text="CNP:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
-                <Label Grid.Row="5" Grid.Column="0" Text="Parola:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
-                <Label Grid.Row="6" Grid.Column="0" Text="Confirmare Parola:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
+                <Label Grid.Row="0" Grid.Column="0" Text="Nume:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
+                <Label Grid.Row="1" Grid.Column="0" Text="Prenume:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
+                <Label Grid.Row="2" Grid.Column="0" Text="Telefon:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
+                <Label Grid.Row="3" Grid.Column="0" Text="Email:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
+                <Label Grid.Row="4" Grid.Column="0" Text="CNP:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
+                <Label Grid.Row="5" Grid.Column="0" Text="Parola:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
+                <Label Grid.Row="6" Grid.Column="0" Text="Confirmare Parola:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
 
-                <Entry Grid.Row="0" Grid.Column="1" Text="{Binding nume}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220"/>
-                <Entry Grid.Row="1" Grid.Column="1" Text="{Binding prenume}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220"/>
-                <Entry Grid.Row="2" Grid.Column="1" Text="{Binding telefon}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220"/>
-                <Entry Grid.Row="3" Grid.Column="1" Text="{Binding email}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220"/>
-                <Entry Grid.Row="4" Grid.Column="1" Text="{Binding cnp}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220"/>
-                <Entry Grid.Row="5" Grid.Column="1" Text="{Binding password}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220" IsPassword="True"/>
-                <Entry Grid.Row="6" Grid.Column="1" Text="{Binding passwordConf}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220" IsPassword="True"/>
-                
+                <Entry Grid.Row="0" Grid.Column="1" Text="{Binding nume}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220" TextColor="Black" Placeholder="Nume" PlaceholderColor="LightGray"/>
+
+                <Entry Grid.Row="1" Grid.Column="1" Text="{Binding prenume}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220" TextColor="Black" Placeholder="Prenume" PlaceholderColor="LightGray" />
+
+                <Entry Grid.Row="2" Grid.Column="1" Text="{Binding telefon}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220" TextColor="Black" Placeholder="Telefon" PlaceholderColor="LightGray"/>
+
+                <Entry Grid.Row="3" Grid.Column="1" Text="{Binding email}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220" TextColor="Black" Placeholder="Email" PlaceholderColor="LightGray"/>
+
+                <Entry Grid.Row="4" Grid.Column="1" Text="{Binding cnp}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220" TextColor="Black" Placeholder="CNP" PlaceholderColor="LightGray"/>
+
+                <Entry Grid.Row="5" Grid.Column="1" Text="{Binding password}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220" IsPassword="True" Placeholder="Parola" TextColor="Black" PlaceholderColor="LightGray"/>
+
+                <Entry Grid.Row="6" Grid.Column="1" Text="{Binding passwordConf}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" WidthRequest="220" IsPassword="True" Placeholder="Confirmare parola" TextColor="Black" PlaceholderColor="LightGray"/>
+
             </Grid>
             <Button Text="Inregistrare" Command="{Binding RegisterCommand}"/>
         </StackLayout>

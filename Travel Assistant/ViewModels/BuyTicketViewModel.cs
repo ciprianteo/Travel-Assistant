@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.Text;
 using Travel_Assistant.Models;
 using Travel_Assistant.Services;
@@ -64,12 +65,12 @@ namespace Travel_Assistant.ViewModels
         }
         public string DepartureDate
         {
-            get => _departureDate.ToString();
+            get => _departureDate.ToString(CultureInfo.CreateSpecificCulture("de-DE"));
             set { _departureDate = DateTime.Parse(Uri.UnescapeDataString(value ?? string.Empty)); OnPropertyChanged(nameof(DepartureDate)); }
         }
         public string ArrivalDate
         {
-            get => _arrivalDate.ToString();
+            get => _arrivalDate.ToString(CultureInfo.CreateSpecificCulture("de-DE"));
             set { _arrivalDate = DateTime.Parse(Uri.UnescapeDataString(value ?? string.Empty)); OnPropertyChanged(nameof(ArrivalDate)); }
         }
         public string Distance

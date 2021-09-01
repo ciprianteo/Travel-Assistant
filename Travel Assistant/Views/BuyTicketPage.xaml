@@ -20,28 +20,28 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Row="0" Grid.Column="0" Text="Tren:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
-                <Label Grid.Row="0" Grid.Column="1" Text="{Binding TrainID}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
-                
-                <Label Grid.Row="1" Grid.Column="0" Text="Data Plecare:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
-                <Label Grid.Row="1" Grid.Column="1" Text="{Binding DepartureDate}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
+                <Label Grid.Row="0" Grid.Column="0" Text="Tren:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
+                <Label Grid.Row="0" Grid.Column="1" Text="{Binding TrainID}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
 
-                <Label Grid.Row="2" Grid.Column="0" Text="Data Sosire:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
-                <Label Grid.Row="2" Grid.Column="1" Text="{Binding ArrivalDate}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
+                <Label Grid.Row="1" Grid.Column="0" Text="Data Plecare:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
+                <Label Grid.Row="1" Grid.Column="1" Text="{Binding DepartureDate}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
 
-                <Label Grid.Row="3" Grid.Column="0" Text="Traseu:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
-                <Label Grid.Row="3" Grid.Column="1" Text="{Binding Journey}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
-                
-                <Label Grid.Row="4" Grid.Column="0" Text="Clasa:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
-                <Picker Grid.Row="4" Grid.Column="1"  ItemsSource="{Binding ClasesList}" SelectedIndex="{Binding ClassIdx}" Title="Clasa" />
-                
-                <Label Grid.Row="5" Grid.Column="0" Text="Categorie:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
-                <Picker Grid.Row="5" Grid.Column="1" ItemsSource="{Binding CategoryList}" SelectedIndex="{Binding CatIdx}" Title="Categorie" />
+                <Label Grid.Row="2" Grid.Column="0" Text="Data Sosire:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
+                <Label Grid.Row="2" Grid.Column="1" Text="{Binding ArrivalDate}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
+
+                <Label Grid.Row="3" Grid.Column="0" Text="Traseu:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
+                <Label Grid.Row="3" Grid.Column="1" Text="{Binding Journey}" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
+
+                <Label Grid.Row="4" Grid.Column="0" Text="Clasa:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
+                <Picker Grid.Row="4" Grid.Column="1"  ItemsSource="{Binding ClasesList}" SelectedIndex="{Binding ClassIdx}" Title="Clasa" TextColor="Black" TitleColor="LightGray"/>
+
+                <Label Grid.Row="5" Grid.Column="0" Text="Categorie:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
+                <Picker Grid.Row="5" Grid.Column="1" ItemsSource="{Binding CategoryList}" SelectedIndex="{Binding CatIdx}" Title="Categorie" TextColor="Black" TitleColor="LightGray"/>
                 
             </Grid>
 
-            <Label Text="Pret" HorizontalOptions="Center" VerticalOptions="End" FontSize="Small" />
-            <Label Text="{Binding Price}" HorizontalOptions="Center" VerticalOptions="End" FontSize="Large" />
+            <Label Text="Pret" HorizontalOptions="Center" VerticalOptions="End" FontSize="Small" TextColor="Black"/>
+            <Label Text="{Binding Price}" HorizontalOptions="Center" VerticalOptions="End" FontSize="Large" TextColor="Black"/>
             <Button Text=" Cumpara Bilet " Padding="20" Command="{Binding BuyTicketCommand}" HorizontalOptions="Center" VerticalOptions="End"/>
 
         </StackLayout>

@@ -20,11 +20,12 @@
                     <ColumnDefinition Width="250"/>
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Row="0" Grid.Column="0" Text="Email:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
-                <Entry Grid.Row="0" Grid.Column="1" Text="{Binding email}"/>
+                <Label Grid.Row="0" Grid.Column="0" Text="Email:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
+                <Entry Grid.Row="0" Grid.Column="1" Text="{Binding email}" TextColor="Black" Placeholder="Email" PlaceholderColor="LightGray"/>
 
-                <Label Grid.Row="1" Grid.Column="0" Text="Password:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" />
-                <Entry IsPassword="True" Text="{Binding password}" Grid.Row="1" Grid.Column="1" WidthRequest="150"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Text="Password:" HorizontalOptions="Start" VerticalOptions="Center" FontSize="Medium" TextColor="Black"/>
+                <Entry IsPassword="True" Text="{Binding password}" Grid.Row="1" Grid.Column="1" WidthRequest="150" TextColor="Black" Placeholder="Password" PlaceholderColor="LightGray"/>
 
             </Grid>
             

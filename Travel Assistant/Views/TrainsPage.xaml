@@ -15,6 +15,7 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
@@ -22,26 +23,32 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Text="Tren: " FontSize="14" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center"/>
+                    <Label Text="Tren: " FontSize="14" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center" TextColor="Black"/>
                     <Label Text="{Binding ID}" 
                             LineBreakMode="NoWrap" 
                             Style="{DynamicResource ListItemTextStyle}" 
                             FontSize="20"
-                            Grid.Row="0" Grid.Column="1"/>
-                    
-                    <Label Text="Ora Plecare: " FontSize="14" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center"/>
+                            Grid.Row="0" Grid.Column="1" TextColor="Black"/>
+
+                    <Label Text="Ora Plecare: " FontSize="14" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" TextColor="Black"/>
                     <Label Text="{Binding DepartureCityDepartureTime}" 
                             LineBreakMode="NoWrap"
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="16" 
-                            Grid.Row="1" Grid.Column="1"/>
-                    
-                    <Label Text="Ora Sosire: " FontSize="14" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center"/>
+                            Grid.Row="1" Grid.Column="1" TextColor="Black"/>
+
+                    <Label Text="Ora Sosire: " FontSize="14" Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center" TextColor="Black"/>
                     <Label Text="{Binding ArrivalCityArrivalTime}" 
                             LineBreakMode="NoWrap"
                             Style="{DynamicResource ListItemDetailTextStyle}"
                             FontSize="16" 
-                            Grid.Row="2" Grid.Column="1"/>
+                            Grid.Row="2" Grid.Column="1" TextColor="Black"/>
+                    <Label Text="Distanta: " FontSize="14" Grid.Row="3" Grid.Column="0" VerticalTextAlignment="Center" TextColor="Black"/>
+                    <Label Text="{Binding Distance}"
+                            LineBreakMode="NoWrap"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="16" 
+                            Grid.Row="3" Grid.Column="1" TextColor="Black"/>
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer 
                                 NumberOfTapsRequired="1"
